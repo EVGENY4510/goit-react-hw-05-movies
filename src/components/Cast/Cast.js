@@ -1,6 +1,7 @@
 import { getCast } from 'Api/Api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import css from './Cast.module.css';
 
 export default function Cast() {
   const [cast, setCast] = useState('');
@@ -19,17 +20,19 @@ export default function Cast() {
 
   console.log(cast);
   return (
-    <div>
+    <div className={css.castWrapper}>
       {cast &&
         cast.map(({ original_name, profile_path, id }) => {
           return (
-            <div key={id}>
+            <div className={css.castCard} key={id}>
               <img
                 src={`https://image.tmdb.org/t/p/original${profile_path}`}
                 alt={original_name}
-                width={100}
+                width={150}
               />
-              <p>{original_name}</p>
+              <div className={css.textCast}>
+                <p>{original_name}</p>
+              </div>
             </div>
           );
         })}

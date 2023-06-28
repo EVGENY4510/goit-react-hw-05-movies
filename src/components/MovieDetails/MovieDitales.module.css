@@ -1,0 +1,80 @@
+.btnLink {
+  position: fixed;
+  z-index: 800;
+  top: 14px;
+  left: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  background-color: black;
+  border-radius: 4px;
+  border: none;
+  transition: 250ms;
+  color: #e7a61a;
+}
+.btnLink:hover {
+  box-shadow: 0px 0px 7px 4px rgba(246, 244, 239, 0.94) inset;
+}
+.MDLink {
+  text-decoration: none;
+}
+
+.wrapperItems {
+  border-bottom: 2px solid black;
+  display: flex;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-left: 8px;
+}
+.genres {
+  font-size: 24px;
+  font-weight: 700;
+}
+.spanItem {
+  margin-left: 16px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.score {
+  font-size: 24px;
+  font-weight: 700;
+}
+.overview {
+  font-size: 24px;
+  font-weight: 700;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.titleCR {
+  margin-left: 40%;
+  font-weight: 700;
+  font-size: 20px;
+}
+.wrapperCR {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 16px;
+  width: 100%;
+}
+
+.linkCR {
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+.linkCR:hover {
+  color: red;
+}

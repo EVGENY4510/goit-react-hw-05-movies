@@ -5,6 +5,8 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import ButtonMinus from 'components/ButtonMinus/ButtonMinus';
 import ButtonPlus from 'components/ButtonPlus/ButtonPlus';
+import css from '../Home/Home.module.css';
+import cssMovie from './Movie.module.css';
 
 export default function Movies() {
   const [movie, setMovie] = useState('');
@@ -65,39 +67,53 @@ export default function Movies() {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handelOnSubmit}>
+      <div className={cssMovie.formDisplay}>
+        <form className={cssMovie.formWrapper} onSubmit={handelOnSubmit}>
           <input
+            className={cssMovie.inputDisplay}
             type="text"
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
-          <button>
+          <button className={cssMovie.formButton}>
             <AiOutlineSearch size={25} />
           </button>
         </form>
       </div>
-      {isLoading && <Loader />}
-      <ul>
-        {condition && <div>No match for your search</div>}
-        {movie &&
-          movie.map(({ title, id, poster_path }) => {
-            return (
-              <li key={id}>
-                <Link to={`/movies/${id}`} state={{ from: location }}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${poster_path}`}
-                    alt={title}
-                    width={200}
-                  />
-                </Link>
-                ;
-              </li>
-            );
-          })}
-      </ul>
-      {movie && page > 1 && <ButtonMinus changePageMinus={changePageMinus} />}
-      {movie && <ButtonPlus changePagePlus={changePagePlus} />}
+      <div className={cssMovie.movieWrapper}>
+        {isLoading && <Loader />}
+        <ul className={css.movieGallery}>
+          {condition && <div>No match for your search</div>}
+          {movie &&
+            movie.map(({ title, id, poster_path }) => {
+              return (
+                <li key={id} className={css.item}>
+                  <Link
+                    className={css.link}
+                    to={`/movies/${id}`}
+                    state={{ from: location }}
+                  >
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                      alt={title}
+                      width={212}
+                      height={300}
+                    />
+                    <div className={css.titleWrapper}>
+                      <p className={css.movieTitle}>{title}</p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+        </ul>
+        <div className={css.btnWrapper}>
+          {movie && page > 1 && (
+            <ButtonMinus changePageMinus={changePageMinus} />
+          )}
+          {movie && <ButtonPlus changePagePlus={changePagePlus} />}
+        </div>
+      </div>
     </div>
   );
 }

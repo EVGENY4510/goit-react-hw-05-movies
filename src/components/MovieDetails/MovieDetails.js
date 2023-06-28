@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import { ImUndo2 } from 'react-icons/im';
+import css from './MovieDitales.module.css';
 
 import {
   Link,
@@ -44,42 +45,57 @@ export default function MovieDetails() {
   const genres = genresArray.join(' ');
 
   return (
-    <div>
+    <div className={css.ditalesWrapper}>
       {isLoading && <Loader />}
       {movie && (
-        <>
-          <Link to={backLinkHref.current}>
-            <BsFillArrowLeftCircleFill size={30} />
-            Go back
+        <div>
+          <Link className={css.MDLink} to={backLinkHref.current}>
+            <button className={css.btnLink} type="button">
+              <ImUndo2 color="#e7a61a" size={25} />
+              Go back
+            </button>
           </Link>
-          <h1>{movie.title}</h1>
-          <img
-            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            alt={movie.title}
-            width={200}
-          />
-          <ul>
-            <li>
-              User score-
-              <span>{userScore}%</span>
-            </li>
-            <li>
-              Overview
-              <span>{movie.overview}</span>
-            </li>
-            <li>
-              Genres
-              <span>{genres}</span>
-            </li>
-          </ul>
-        </>
+
+          <div className={css.wrapperItems}>
+            <img
+              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              alt={movie.title}
+              width={300}
+            />
+            <div className={css.textWrapper}>
+              <h1>{movie.title}</h1>
+              <ul className={css.list}>
+                <li className={css.score}>
+                  User score
+                  <p
+                    className={css.pItem}
+                    style={{ color: userScore > 50 ? '#008000' : 'red' }}
+                  >
+                    {userScore}%
+                  </p>
+                </li>
+                <li className={css.overview}>
+                  Overview<p className={css.spanItem}>{movie.overview}</p>
+                </li>
+                <li className={css.genres}>
+                  Genres<p className={css.spanItem}>{genres}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       )}
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
+      <span className={css.titleCR}>Additional information</span>
+      <ul className={css.wrapperCR}>
+        <li className={css.itemCR}>
+          <NavLink className={css.linkCR} to="cast">
+            Cast
+          </NavLink>
         </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
+        <li className={css.itemCR}>
+          <NavLink className={css.linkCR} to="reviews">
+            Reviews
+          </NavLink>
         </li>
       </ul>
       <Outlet />

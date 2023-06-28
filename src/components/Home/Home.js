@@ -4,6 +4,7 @@ import Loader from 'components/Loader/Loader';
 import { Link } from 'react-router-dom';
 import ButtonMinus from 'components/ButtonMinus/ButtonMinus';
 import ButtonPlus from 'components/ButtonPlus/ButtonPlus';
+import css from './Home.module.css';
 
 export default function Home() {
   const [movieTrend, setTrend] = useState('');
@@ -31,29 +32,34 @@ export default function Home() {
   }, [page]);
 
   return (
-    <div>
+    <div className={css.movieWrapper}>
       {isLoading && <Loader />}
-      <ul>
+      <ul className={css.movieGallery}>
         {movieTrend &&
           movieTrend.map(({ title, id, poster_path }) => {
             return (
-              <li key={id}>
-                <Link to={`movies/${id}`}>
+              <li key={id} className={css.item}>
+                <Link to={`movies/${id}`} className={css.link}>
                   <img
                     src={`https://image.tmdb.org/t/p/original${poster_path}`}
                     alt={title}
-                    width={200}
+                    width={212}
+                    height={300}
                   />
+                  <div className={css.titleWrapper}>
+                    <p className={css.movieTitle}>{title}</p>
+                  </div>
                 </Link>
-                ;
               </li>
             );
           })}
       </ul>
-      {movieTrend && page > 1 && (
-        <ButtonMinus changePageMinus={changePageMinus} />
-      )}
-      {movieTrend && <ButtonPlus changePagePlus={changePagePlus} />}
+      <div className={css.btnWrapper}>
+        {movieTrend && page > 1 && (
+          <ButtonMinus changePageMinus={changePageMinus} />
+        )}
+        {movieTrend && <ButtonPlus changePagePlus={changePagePlus} />}
+      </div>
     </div>
   );
 }

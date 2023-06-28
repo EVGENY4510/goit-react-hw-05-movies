@@ -1,0 +1,26 @@
+.formDisplay {
+  position: fixed;
+  z-index: 800;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.inputDisplay {
+  height: 28px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+}
+.formWrapper {
+  display: flex;
+  align-items: center;
+}
+.formButton {
+  border-radius: 0 4px 4px 0;
+  border: none;
+  background-color: white;
+}
+.movieWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -1,11 +1,6 @@
-// import Cast from './Cast/Cast';
-// import MovieDetails from './MovieDetails/MovieDetails';
-// import Movies from './Movies/Movies';
-// import Home from './Home/Home';
-// import Reviews from './Reviews/Reviews';
+import css from './App.module.css';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import Loader from './Loader/Loader';
 
 const Cast = lazy(() => import('../components/Cast/Cast'));
 const MovieDetails = lazy(() =>
@@ -17,16 +12,28 @@ const Reviews = lazy(() => import('../components/Reviews/Reviews'));
 
 export const App = () => {
   return (
-    <div>
-      <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-        </nav>
+    <div className={css.appWrapper}>
+      <header className={css.header}>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? `${css.active}` : `${css.nutActive}`
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? `${css.active}` : `${css.nutActive}`
+          }
+          to="/movies"
+        >
+          Movies
+        </NavLink>
       </header>
       <main>
-        <section>
-          <Suspense fallback={<Loader />}>
+        <section className={css.section}>
+          <Suspense>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/movies" element={<Movies />} />

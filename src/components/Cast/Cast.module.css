@@ -1,0 +1,14 @@
+.castCard {
+  width: 150px;
+  height: auto;
+}
+.castWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 51px;
+}
+.textCast {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
