@@ -1,15 +1,14 @@
-import { Dna } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
 
 export default function Loader() {
   return (
     <>
-      <Dna
+      <RotatingLines
+        strokeColor="grey"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
         visible={true}
-        height="400"
-        width="400"
-        ariaLabel="dna-loading"
-        wrapperStyle={{}}
-        wrapperClass="dna-wrapper"
       />
     </>
   );

@@ -1,11 +1,22 @@
-import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
+
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { getById } from 'Api/Api';
 import Loader from 'components/Loader/Loader';
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
   const { movieId } = useParams();
 
@@ -37,7 +48,10 @@ export default function MovieDetails() {
       {isLoading && <Loader />}
       {movie && (
         <>
-          {' '}
+          <Link to={backLinkHref.current}>
+            <BsFillArrowLeftCircleFill size={30} />
+            Go back
+          </Link>
           <h1>{movie.title}</h1>
           <img
             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -60,29 +74,6 @@ export default function MovieDetails() {
           </ul>
         </>
       )}
-
-      {/* <h1>{movie.title}</h1>
-      <img
-        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        alt={movie.title}
-        width={200}
-      />
-
-      <ul>
-        <li>
-          User score-
-          <span>{userScore}%</span>
-        </li>
-        <li>
-          Overview
-          <span>{movie.overview}</span>
-        </li>
-        <li>
-          Genres
-          <span>{genres}</span>
-        </li>
-      </ul> */}
-
       <ul>
         <li>
           <NavLink to="cast">Cast</NavLink>
