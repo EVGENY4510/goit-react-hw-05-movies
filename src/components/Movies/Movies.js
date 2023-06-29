@@ -80,10 +80,26 @@ export default function Movies() {
           </button>
         </form>
       </div>
-      <div className={cssMovie.movieWrapper}>
+      <div
+        className={cssMovie.movieWrapper}
+        style={{ marginTop: movie ? 0 : -65 }}
+      >
         {isLoading && <Loader />}
         <ul className={css.movieGallery}>
-          {condition && <div>No match for your search</div>}
+          {condition && (
+            <div
+              style={{
+                color: 'red',
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+              }}
+            >
+              No match for your search
+            </div>
+          )}
+
           {movie &&
             movie.map(({ title, id, poster_path }) => {
               return (

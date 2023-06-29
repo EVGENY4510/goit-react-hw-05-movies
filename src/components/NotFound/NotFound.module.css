@@ -1,0 +1,10 @@
+.notFound {
+  position: fixed;
+  z-index: 800;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #e7a61a;
+  font-size: 700;
+  font-size: 50px;
+}

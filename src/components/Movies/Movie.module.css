@@ -20,6 +20,7 @@
   background-color: white;
 }
 .movieWrapper {
+  margin-top: -65px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

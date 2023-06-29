@@ -5,6 +5,7 @@
   border-radius: 4px;
   border: none;
   transition: 250ms;
+  margin-bottom: 16px;
 }
 .btnPlus:hover {
   box-shadow: 0px 0px 7px 4px rgba(246, 244, 239, 0.94) inset;

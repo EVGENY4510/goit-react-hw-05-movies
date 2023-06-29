@@ -1,33 +1,5 @@
-.header {
-  position: fixed;
-  z-index: 700;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  width: 100%;
-  height: 65px;
-
-  background-color: #e7a61a;
-  box-shadow: inset 3px 1px 23px 11px rgba(0, 0, 0, 0.75);
-}
-
-.active {
-  font-size: 30px;
-  font-weight: 700;
-  color: rgb(247, 5, 5);
-  text-decoration: none;
-}
-.nutActive {
-  font-size: 30px;
-  font-weight: 700;
-  color: black;
-  text-decoration: none;
-}
 .section {
   width: 1158px;
   background-color: #e7a61a;
-  padding: 0 16px 16px 16px;
+  padding: 0 16px 0 16px;
 }
